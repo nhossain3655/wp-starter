@@ -1,0 +1,155 @@
+/*!
+Theme Name: starter
+Theme URI: http://underscores.me/
+Author: Nazmul Hossain
+Author URI: https://www.techdevo.com
+Description: A multipurpose WordPress theme
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: starter
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+starter is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+
+
+/* Header Menu */
+
+/* Header Nav Menu */
+.p-menu {
+    margin-top: 11px;
+}
+.p-menu nav {
+  z-index: 9999;
+}
+.p-menu nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.p-menu nav ul li {
+    list-style: none;
+    position: relative;
+}
+.p-menu nav ul li.menu-item-has-children:before {
+    font-family: fontAwesome;
+    position: absolute;
+    content: "\f0d7";
+    line-height: 40px;
+    color: #fff;
+    right: 2px;
+}
+.p-menu nav ul li:hover.menu-item-has-children:before {
+    content: "\f0d8";
+}
+.p-menu nav ul > li.menu-item-has-children > ul, .p-menu nav ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul {
+    position: absolute;
+    left: 0;
+    background-color: #333;
+    display: none;
+    z-index: 9;
+}
+.p-menu nav ul > li.menu-item-has-children:hover ul, .p-menu nav ul > li.menu-item-has-children > ul > li.menu-item-has-children:hover > ul {
+    display: block;
+}
+.p-menu nav ul li ul li, .p-menu nav ul li ul li a {
+    display: block;
+    width: 200px;
+}
+.p-menu nav ul li a {
+    padding: 10px 20px;
+    line-height: 20px;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    font-family: oswald;
+    font-size: 20px;
+}
+.p-menu nav ul li a:hover, .p-menu nav ul li a.active {
+    color: #FC653E;
+}
+.menu-toggle {
+    color: #fff;
+    float: right;
+    padding: 10px 20px;
+    font-size: 17px;
+    line-height: 20px;
+    cursor: pointer;
+    display: none;
+}
+.p-menu nav ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul {
+    left:200px;
+    top: 20px;
+    z-index: 99999;
+}
+.p-menu nav ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul {
+    left: -200px;
+}
+
+/* Header Nav Menu Mobile */
+@media only screen and (max-width: 991px) {
+
+     .menu-toggle {
+      display: block;
+     }
+
+     .p-menu nav {
+      /*display: none;*/
+      position: absolute;
+      height: calc(100vh - 50px);
+      background-color: rgba(0,0,0, 0.8);
+      top: 50px;
+      left: -500%;
+      transition: 0.5s;
+      z-index: 9999;
+     }
+     .p-menu nav.active{
+      width: 172%;
+      left: -72%;
+      margin-top: 12px;
+     }
+     .p-menu nav ul {
+      display: block;
+      text-align: left;
+     }
+     .p-menu nav ul li a {
+      display: block;
+     }
+
+     .p-menu nav ul li.menu-item-has-children:hover ul, .p-menu nav ul li.menu-item-has-children ul li.menu-item-has-children:hover ul {
+      position: relative;
+      background-color: rgba(0, 62, 111, 0.4);
+     }
+     .p-menu nav ul li ul li {
+      width: 100%;
+     }
+     .p-menu nav ul li ul li a {
+      width: 90%;
+      border-bottom: 1px solid rgba(0,0,0, 0.3);
+     }
+
+    .p-menu nav ul li.menu-item-has-children:before {
+      width: 10%;
+      border-bottom: 1px solid rgba(0,0,0, 0.3);
+      right: 0px;
+      padding-left: 10px;
+    }
+
+    .p-menu nav ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul {
+        left:0;
+        top: 0;
+    }
+    .p-menu nav ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul > li.menu-item-has-children > ul {
+        left: 0;
+    }
+
+}
