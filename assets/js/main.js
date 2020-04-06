@@ -8,12 +8,27 @@
         $(".carousel-inner .item:first-child").addClass("active");
         
         $('[data-toggle="tooltip"]').tooltip();
-
-
-        $('.menu-toggle').click(function(){
-            $('nav').toggleClass('active')
-        });
         
+
+        var contador = 1;
+        var ancho = $(document).width();
+
+
+    $('.menu-toggle').click(function(){
+        
+        if (contador == 1){
+            $('.mdisplay').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            contador = 1;
+            $('.mdisplay').animate({
+                left: '-100%'
+            });
+        };
+        
+    });
 
 
     });

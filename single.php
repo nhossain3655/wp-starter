@@ -12,7 +12,7 @@ get_header();
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<div style="background-image: url(<?php the_post_thumbnail_url( 'large' )?>);" class="starter-page-title-area">
+	<div <?php if(has_post_thumbnail()) : ?> style="background-image: url(<?php the_post_thumbnail_url( 'large' )?>);" <?php endif; ?> class="starter-page-title-area">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">				

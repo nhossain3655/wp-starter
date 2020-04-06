@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package starter
+ * @package nazagency
  */
 
 ?>
@@ -22,13 +22,13 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'starter' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nazagency' ); ?></a>
 
 	<header id="masthead" class="site-header">
 		<div class="header-top">
 			<div class="container-fluid">
 				<div class="row menu-background">
-					<div class="col-lg-4 col-5">
+					<div class="col-lg-4 col-5 d-flex align-items-center">
 						<div class="site-branding">
 							<?php
 							the_custom_logo();
@@ -44,7 +44,7 @@
 					</div>
 					<div class="col-lg-8 col-7">
 						<div class="p-menu">
-							<nav>
+							<nav class="mdisplay">
 								<?php
 									wp_nav_menu( array(
 									'container'=> false,
