@@ -30,7 +30,7 @@ if ( ! function_exists( 'starter_posted_on' ) ) :
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+		echo '<span class="posted-on"><i class="fas fa-calendar-check" aria-hidden="true"></i> ' . $posted_on . '</span>'; // WPCS: XSS OK.
 
 	}
 endif;
@@ -46,10 +46,106 @@ if ( ! function_exists( 'starter_posted_by' ) ) :
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+		echo '<span class="byline"><i class="fas fa-user-circle" aria-hidden="true"></i> ' . $byline . '</span>'; // WPCS: XSS OK.
 
 	}
 endif;
+
+if ( ! function_exists( 'starter_posted_comment' ) ) :
+	/**
+	 * Prints HTML with meta information for the current author.
+	 */
+	function starter_posted_comment() {
+		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+			echo '<span class="comments-link"><i class="fas fa-comments" aria-hidden="true"></i> ';
+			comments_popup_link(
+				sprintf(
+					wp_kses(
+						/* translators: %s: post title */
+						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'starter' ),
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					get_the_title()
+				)
+			);
+			echo '</span>';
+		}
+	}
+endif;
+
+
+if ( ! function_exists( 'starter_post_comment' ) ) :
+    /**
+     * Template for comments and pingbacks.
+     *
+     * Used as a callback by wp_list_comments() for displaying the comments.
+     */
+    function starter_post_comment( $comment, $args, $depth ) {
+       // $GLOBALS['comment'] = $comment;
+
+        if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
+
+            <li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
+            <div class="comment-body">
+                <?php _e( 'Pingback:', 'starter' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'starter' ), '<span class="edit-link">', '</span>' ); ?>
+            </div>
+
+        <?php else : ?>
+
+        <li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
+            <article id="div-comment-<?php comment_ID(); ?>" class="comment-body media mb-4">
+                <a class="pull-left" href="#">
+                    <?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+                </a>
+
+                <div class="media-body">
+                    <div class="media-body-wrap card">
+
+                        <div class="card-header">
+                            <h5 class="mt-0"><?php printf( __( '%s <span class="says">says:</span>', 'starter' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?></h5>
+                            <div class="comment-meta">
+                                <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+                                    <time datetime="<?php comment_time( 'c' ); ?>">
+                                        <?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'starter' ), get_comment_date(), get_comment_time() ); ?>
+                                    </time>
+                                </a>
+                                <?php edit_comment_link( __( '<span style="margin-left: 5px;" class="glyphicon glyphicon-edit"></span> Edit', 'starter' ), '<span class="edit-link">', '</span>' ); ?>
+                            </div>
+                        </div>
+
+                        <?php if ( '0' == $comment->comment_approved ) : ?>
+                            <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'starter' ); ?></p>
+                        <?php endif; ?>
+
+                        <div class="comment-content card-block">
+                            <?php comment_text(); ?>
+                        </div><!-- .comment-content -->
+
+                        <?php comment_reply_link(
+                            array_merge(
+                                $args, array(
+                                    'add_below' => 'div-comment',
+                                    'depth' 	=> $depth,
+                                    'max_depth' => $args['max_depth'],
+                                    'before' 	=> '<footer class="reply comment-reply card-footer">',
+                                    'after' 	=> '</footer><!-- .reply -->'
+                                )
+                            )
+                        ); ?>
+
+                    </div>
+                </div><!-- .media-body -->
+
+            </article><!-- .comment-body -->
+
+            <?php
+        endif;
+    }
+endif; // ends check for starter_post_comment()
 
 if ( ! function_exists( 'starter_entry_footer' ) ) :
 	/**
@@ -71,25 +167,6 @@ if ( ! function_exists( 'starter_entry_footer' ) ) :
 				/* translators: 1: list of tags. */
 				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'starter' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
-		}
-
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'starter' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-			echo '</span>';
 		}
 
 		edit_post_link(

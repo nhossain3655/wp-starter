@@ -21,44 +21,18 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php if ( function_exists( 'wp_body_open' ) ) {
+		wp_body_open();
+	} ?>
+
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'nazagency' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="header-top">
-			<div class="container-fluid">
-				<div class="row menu-background">
-					<div class="col-lg-4 col-5 d-flex align-items-center">
-						<div class="site-branding">
-							<?php
-							the_custom_logo();
-							if ( is_front_page() && is_home() ) :
-								?>
-								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-								<?php
-							else :
-								?>
-								<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-								<?php endif; ?>
-							</div><!-- .site-branding -->
-					</div>
-					<div class="col-lg-8 col-7">
-						<div class="p-menu">
-							<nav class="mdisplay">
-								<?php
-									wp_nav_menu( array(
-									'container'=> false,
-									'theme_location' => 'menu-1',
-									'menu_id'        => 'primery',
-									) );
-								?>
-							</nav>
-							<div class="menu-toggle"><i class="fa fa-bars"></i></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'starter' ); ?></a>
+    <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
+	<header id="mastheadx" class="site-header navbar-static-top" role="banner">
+        <!-- menu works -->
+       <?php include_once get_template_directory() . '/inc/menubars/header_nav.php'; ?>
+       <!-- .menu work ends -->
 	</header><!-- #masthead -->
-
+    
 	<div id="content" class="site-content">
+                <?php endif; ?>

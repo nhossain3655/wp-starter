@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-		<div class="starter-page-title-area">
+		<div class="starter-page-title-area search-title">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">

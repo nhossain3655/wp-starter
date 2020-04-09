@@ -32,6 +32,7 @@
 				<?php
 				starter_posted_on();
 				starter_posted_by();
+				starter_posted_comment();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>

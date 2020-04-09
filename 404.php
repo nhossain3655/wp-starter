@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-		<div class="starter-page-title-area">
+		<div class="starter-page-title-area nfound-title">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -36,7 +36,7 @@ get_header();
 				</div>
 				<div class="row widget-area">
 					<div class="col-lg-4">
-						<div class="widget">
+						<div class="widget widget_search">
 							<?php
 							get_search_form();
 							?>

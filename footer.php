@@ -9,22 +9,12 @@
  * @package starter
  */
 
-?>
+ if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 
 	</div><!-- #content -->
 
+    <?php get_template_part( 'footer-widget' ); ?>
 	<footer id="colophon" class="site-footer">
-		<?php if (is_active_sidebar('footer')) : ?>
-
-			<div class="footer-top-area">
-				<div class="container">
-					<div class="d-flex flex-row flex-column align-items-center <?php /* echo esc_attr( $widget_aligns ) */ ?> flex-wrap">
-						<?php dynamic_sidebar('footer') ?>
-					</div>
-				</div>
-			</div>
-			
-		<?php endif; ?>
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'starter' ) ); ?>">
 				<?php
@@ -39,6 +29,7 @@
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
+<?php endif; ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

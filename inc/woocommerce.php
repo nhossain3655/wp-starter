@@ -29,7 +29,7 @@ add_action( 'after_setup_theme', 'starter_woocomerce_setup' );
  * @return void
  */
 function starter_woocomerce_scripts() {
-	wp_enqueue_style( 'starter-woocomerce-style', get_template_directory_uri() . '/woocommerce.css' );
+	wp_enqueue_style( 'starter-woocomerce-style', get_template_directory_uri() . '/assets/css/woocommerce.css' );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {
