@@ -1,5 +1,5 @@
-# wp-starter
-A starter underscores.me generated WordPress theme Including Bootstarp 4 and FontAwesome 4.6.3.
+# starter
+A starter underscores.me generated WordPress theme Including Latest Bootstarp 4.4.1 and FontAwesome 5.13.0
 It's a themeforest standard starter theme can easily be modified for self-branding.
 
 The processes have been given below.
