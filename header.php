@@ -25,7 +25,7 @@
 		wp_body_open();
 	} ?>
 
-<div id="page" class="site">
+<div id="page" class="site sscrol">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'starter' ); ?></a>
     <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 	<header id="mastheadx" class="site-header navbar-static-top" role="banner">

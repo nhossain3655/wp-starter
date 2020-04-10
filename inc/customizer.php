@@ -216,7 +216,9 @@ function starter_customize_register( $wp_customize ) {
  ) ) );
 
 
-    /*header background section for different pages*/
+    /*=============
+    Header background section for different pages
+    =============*/
     $wp_customize->add_section(
         'title_bg_section',
         array(
@@ -372,7 +374,40 @@ function starter_customize_register( $wp_customize ) {
                     'section'    => 'title_bg_section'                   
                 )
             ) 
-        );  // Custom theme option ends
+        );  
+
+    /*============ 
+    Adding Section in panel for Other Customization
+    ============*/
+    $wp_customize->add_section(
+        'other_customize',
+        array(
+            'title' => __( 'Other Customization', 'starter' ),
+            //'description' => __( 'This is a section for the nav', 'starter' ),
+            'panel' => 'starter_theme_options',
+            'priority' => 30,
+        )
+    );
+    // Nav alignment configure
+    $wp_customize->add_setting( 
+        'smooth_scroll', 
+        array(
+        'default'   => 'no',
+        'type'       => 'theme_mod',
+        'capability' => 'edit_theme_options',
+        'sanitize_callback' => 'wp_filter_nohtml_kses',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'smooth_scroll', array(
+        'label' => __( 'Enable smooth scrolling', 'starter' ),
+        'section'    => 'other_customize',
+        'settings'   => 'smooth_scroll',
+        'type'    => 'select',
+        'choices' => array(
+            'yes' => __('Yes', 'starter'),
+            'no' => __('No', 'starter')
+        )
+    ) ) ); // Custom theme option ends
 
 
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
