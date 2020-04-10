@@ -482,6 +482,19 @@ h2.entry-title {
 	padding-left: 15px;
 }
 /* Comment Area normal table */
+.comments-area {
+    padding: 40px 0;
+}
+
+p.no-comments {
+    padding: 10px;
+    font-weight: 700;
+    background-color: #e21b48;
+    color: #fff;
+    display: block;
+    margin: 0 0 0 5px;
+}
+
 .comments-area table {
 	border-left: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
