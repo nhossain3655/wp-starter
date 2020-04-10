@@ -530,7 +530,8 @@ address {
 }
 /* Single Blog nav */
 .nav-links {
-	overflow: hidden;
+	overflow-wrap: break-word;
+	word-break: break-all;
 	margin-top: 50px;
 }
 .nav-links a{
