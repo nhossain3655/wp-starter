@@ -493,7 +493,7 @@ h2.comments-title {
     color: #fff;
 }
 
-p.no-comments {
+.comments-area p.no-comments {
     padding: 10px;
     font-weight: 700;
     background-color: #e21b48;
