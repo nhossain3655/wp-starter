@@ -545,8 +545,10 @@ address {
 	padding: 5px 10px;
 }
 .nav-previous, .nav-next{
+	max-width: 50%;
+}
+.nav-previous {
 	float: left;
-	width: 50%;
 }
 .nav-next {
 	text-align: right;
