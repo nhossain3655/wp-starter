@@ -482,6 +482,10 @@ h2.entry-title {
 	padding-left: 15px;
 }
 /* Comment Area normal table */
+ul.children {
+    list-style: none;
+}
+
 .comments-area {
     padding: 40px 0;
 }
