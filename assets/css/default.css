@@ -493,7 +493,6 @@ h2.entry-title {
 h2.comments-title {
     background-color: #46be25;
     padding: 10px;
-    margin: 0 0 10px 5px;
     color: #fff;
 }
 
@@ -503,7 +502,6 @@ h2.comments-title {
     background-color: #e21b48;
     color: #fff;
     display: block;
-    margin: 0 0 0 5px;
 }
 
 .comments-area table {
