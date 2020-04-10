@@ -486,6 +486,13 @@ h2.entry-title {
     padding: 40px 0;
 }
 
+h2.comments-title {
+    background-color: #46be25;
+    padding: 10px;
+    margin: 0 0 10px 5px;
+    color: #fff;
+}
+
 p.no-comments {
     padding: 10px;
     font-weight: 700;
